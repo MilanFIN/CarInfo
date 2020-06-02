@@ -2,7 +2,7 @@ import pygame
 from carconnection import *
 
 WHITE = (255,255,255)
-FONT = pygame.font.SysFont('Sans', 50)
+FONT = pygame.font.SysFont('Arial', 50)
 
 class BaseBlock():
 	#derived classes must define xpos and ypos

@@ -10,6 +10,7 @@ pygame.font.init()
 from views.baseview import *
 from views.testview import *
 from views.homeview import *
+from views.rpmview import *
 from carconnection import *
 
 
@@ -27,6 +28,7 @@ class CarInfo():
 
 		self.views["test"] = TestView(self.screen, self.connection)
 		self.views["home"] = HomeView(self.screen, self.connection)
+		self.views["rpm"] = RpmView(self.screen, self.connection)
 
 		self.activeView = "home"
 
