@@ -9,7 +9,7 @@ class BackButton(BaseBlock):
 		self.ysize = 50
 
 	def click(self):
-		return "home"
+		return "homeview"
 	def update(self):
 		self.connection.getValue("test")
 		pass

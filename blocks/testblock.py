@@ -2,6 +2,7 @@ from .baseblock import *
 from carconnection import *
 
 
+
 class TestBlock(BaseBlock):
 	def __init__(self, screen, connection, xpos, ypos):
 		super().__init__(screen, connection, xpos, ypos)
@@ -9,7 +10,7 @@ class TestBlock(BaseBlock):
 		self.ysize = 175
 
 	def click(self):
-		return "test"
+		return "testview"
 	def update(self):
 		self.connection.getValue("test")
 		pass

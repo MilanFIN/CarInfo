@@ -11,6 +11,7 @@ from views.baseview import *
 from views.testview import *
 from views.homeview import *
 from views.rpmview import *
+from views.temperatureview import *
 from carconnection import *
 
 
@@ -26,11 +27,12 @@ class CarInfo():
 
 		self.connection = CarConnection()
 
-		self.views["test"] = TestView(self.screen, self.connection)
-		self.views["home"] = HomeView(self.screen, self.connection)
-		self.views["rpm"] = RpmView(self.screen, self.connection)
+		self.views["testview"] = TestView(self.screen, self.connection)
+		self.views["homeview"] = HomeView(self.screen, self.connection)
+		self.views["rpmview"] = RpmView(self.screen, self.connection)
+		self.views["temperatureview"] = TemperatureView(self.screen, self.connection)
 
-		self.activeView = "home"
+		self.activeView = "homeview"
 
 	def run(self):
 		pass

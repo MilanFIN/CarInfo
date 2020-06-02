@@ -14,6 +14,6 @@ class BaseView():
 		for block in self.blocks:
 			block.update()
 	def render(self):
-		self.screen.fill((0, 0, 10))
+		self.screen.fill((0, 0, 20))
 
 	

@@ -2,7 +2,7 @@ from .baseblock import *
 from carconnection import *
 
 
-class Rpm(BaseBlock):
+class Temperature(BaseBlock):
 	def __init__(self, screen, connection, xpos, ypos):
 		super().__init__(screen, connection, xpos, ypos)
 		self.xsize = 175
@@ -11,18 +11,16 @@ class Rpm(BaseBlock):
 		self.value = ""
 
 	def click(self):
-		return "rpmview"
+		return "temperatureview"
 	def update(self):
-		self.value = self.connection.getValue("rpm")
 		pass
 	def render(self):
 		super().render()
 		# draw a rectangle
 		pygame.draw.rect(self.screen, WHITE, pygame.Rect(self.x, self.y, self.xsize, self.ysize), 3)
 
+		font = pygame.font.SysFont('Arial', 35)
 
-		text = FONT.render(self.value, False, (255,255,255))
-		text2 = FONT.render("RPM", False, (255,255,255))
+		text2 = font.render("Temperatures", False, (255,255,255))
 
-		self.screen.blit(text,(self.x + 45,self.y + 45))
-		self.screen.blit(text2,(self.x + 45,self.y + 95))
+		self.screen.blit(text2,(self.x + 8,self.y + 95))
