@@ -4,12 +4,13 @@ from blocks.testblock import *
 from blocks.rpm import *
 from blocks.temperature import *
 from blocks.fuel import *
+from blocks.driving import *
 
 class HomeView(BaseView):
 	def __init__(self, screen, connection):
 		super().__init__(screen, connection)
 
-		self.blocks.append(TestBlock(screen, connection, 95,43))
+		self.blocks.append(Driving(screen, connection, 95,43))
 		self.blocks.append(Rpm(screen, connection, 313,43))
 		self.blocks.append(Fuel(screen, connection, 531,43))
 		self.blocks.append(TestBlock(screen, connection, 95,261))
