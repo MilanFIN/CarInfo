@@ -19,7 +19,7 @@ class Fuel(BaseBlock):
 		# draw a rectangle
 		pygame.draw.rect(self.screen, WHITE, pygame.Rect(self.x, self.y, self.xsize, self.ysize), 3)
 
-		font = pygame.font.SysFont('Arial', 50)
+		font = pygame.font.SysFont('Arial', 75)
 
 		text2 = font.render("Fuel", False, (255,255,255))
 

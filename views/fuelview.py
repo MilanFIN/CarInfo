@@ -2,6 +2,9 @@ from .baseview import *
 from carconnection import *
 from blocks.blank import *
 from blocks.backbutton import *
+from blocks.fuelpercentage import *
+from blocks.mpg import *
+from blocks.range import *
 
 class FuelView(BaseView):
 	def __init__(self, screen, connection):
@@ -10,12 +13,19 @@ class FuelView(BaseView):
 		self.blocks.append(BackButton(screen, connection, 0,0))
 
 
-		self.blocks.append(Blank(screen, connection, 95,43))
-		self.blocks.append(Blank(screen, connection, 313,43))
-		self.blocks.append(Blank(screen, connection, 531,43))
-		self.blocks.append(Blank(screen, connection, 95,261))
-		self.blocks.append(Blank(screen, connection, 313,261))
-		self.blocks.append(Blank(screen, connection, 531,261))
+		self.blocks.append(Fuelpercentage(screen, connection, 50,150))
+
+		self.blocks.append(Mpg(screen, connection, 300,150))
+		
+		self.blocks.append(Range(screen, connection, 550,150))
+
+
+		#self.blocks.append(Blank(screen, connection, 95,43))
+		#self.blocks.append(Blank(screen, connection, 313,43))
+		#self.blocks.append(Blank(screen, connection, 531,43))
+		#self.blocks.append(Blank(screen, connection, 95,261))
+		#self.blocks.append(Blank(screen, connection, 313,261))
+		#self.blocks.append(Blank(screen, connection, 531,261))
 
 
 	def click(self, x, y):

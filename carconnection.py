@@ -12,4 +12,6 @@ class CarConnection():
 			return "1"
 		elif (label == "speed"):
 			return "45"
+		elif (label == "fuelpercentage"):
+			return "30"
 		return "test"
