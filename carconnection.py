@@ -12,7 +12,7 @@ class CarConnection():
 		elif (label == "speed"):
 			return "45"
 		elif (label == "fuelpercentage"):
-			return "30"
+			return "100"
 		elif (label == "throttle"): #percentages
 			self.throttle += self.throttleaddition
 			if (self.throttle >= 100 or self.throttle <= 0):
