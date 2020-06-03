@@ -13,8 +13,8 @@ class Speed(BaseBlock):
 	def click(self):
 		return ""
 	def update(self):
-		gear = self.connection.getValue("speed")
-		self.value = gear
+		speed = self.connection.getValue("speed")
+		self.value = speed
 
 		pass
 	def render(self):
