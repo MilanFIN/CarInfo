@@ -1,6 +1,10 @@
 class CarConnection():
 	def __init__(self):
-		pass
+		
+		
+		self.rpm = 0
+		self.rpmAddition = 30
+
 		self.throttle = 0
 		self.throttleaddition = 1
 
@@ -10,7 +14,10 @@ class CarConnection():
 
 	def getValue(self, label):
 		if (label == "rpm"):
-			return "1000"
+			self.rpm += self.rpmAddition
+			if (self.rpm >= 8000 or self.rpm <= 0):
+				self.rpmAddition *= -1
+			return str(self.rpm)
 		elif (label == "gear"):
 			return "1"
 		elif (label == "speed"):

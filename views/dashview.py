@@ -7,7 +7,7 @@ from blocks.blank import *
 from blocks.speed import *
 from blocks.backbutton import *
 
-class RpmView(BaseView):
+class DashView(BaseView):
 	def __init__(self, screen, connection):
 		super().__init__(screen, connection)
 
@@ -15,11 +15,8 @@ class RpmView(BaseView):
 
 
 		self.blocks.append(Speed(screen, connection, 95,43))
-		self.blocks.append(Rpm(screen, connection, 313,43))
+		self.blocks.append(Rpm(screen, connection, 313,80))
 		self.blocks.append(Gear(screen, connection, 531,43))
-		self.blocks.append(Blank(screen, connection, 95,261))
-		self.blocks.append(Blank(screen, connection, 313,261))
-		self.blocks.append(Blank(screen, connection, 531,261))
 
 
 	def click(self, x, y):
