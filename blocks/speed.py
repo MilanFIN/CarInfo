@@ -9,6 +9,8 @@ class Speed(BaseBlock):
 		self.ysize = 175
 
 		self.value = ""
+		self.maxHeight = 200
+		self.maxValue = 130 # max expected saturation value
 
 	def click(self):
 		return ""
@@ -20,11 +22,21 @@ class Speed(BaseBlock):
 	def render(self):
 		super().render()
 		# draw a rectangle
-		pygame.draw.rect(self.screen, WHITE, pygame.Rect(self.x, self.y, self.xsize, self.ysize), 3)
+		speed = int(self.value)
 
+		if (speed > self.maxValue):
+			speed = self.maxValue
 
-		text = FONT.render(self.value, False, (255,255,255))
-		text2 = FONT.render("km/h", False, (255,255,255))
+		scaling = self.maxHeight/self.maxValue		
 
-		self.screen.blit(text,(self.x + 45,self.y + 45))
-		self.screen.blit(text2,(self.x + 45,self.y + 95))
+		height = scaling*speed #scaling purposes only
+		fraction = speed / self.maxValue
+
+		pygame.draw.rect(self.screen, (0+(255*fraction),255-(255*fraction),0), pygame.Rect(self.x, self.y+200, 50, -height))
+		font1 = pygame.font.SysFont('Arial', 60)
+		text = font1.render(self.value, False, (255,255,255))
+		self.screen.blit(text,(self.x + 70,self.y + 160))
+		font2 = pygame.font.SysFont('Arial', 70)
+		text2 = font2.render("km/h", False, (255,255,255))
+		self.screen.blit(text2,(self.x ,self.y + 230))
+

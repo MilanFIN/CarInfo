@@ -11,6 +11,8 @@ class CarConnection():
 		self.steeringAngle = 0
 		self.steeringAddition = 1
 
+		self.speed = 0
+		self.speedAddition = 1
 
 	def getValue(self, label):
 		if (label == "rpm"):
@@ -21,7 +23,10 @@ class CarConnection():
 		elif (label == "gear"):
 			return "1"
 		elif (label == "speed"):
-			return "45"
+			self.speed += self.speedAddition
+			if (self.speed >= 150 or self.speed <= 0):
+				self.speedAddition *= -1
+			return str(self.speed)
 		elif (label == "fuelpercentage"):
 			return "100"
 		elif (label == "throttle"): #percentages
