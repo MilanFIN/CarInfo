@@ -41,4 +41,8 @@ class CarConnection():
 			return str(self.steeringAngle)
 		elif (label == "ambienttemperature"):
 			return "10"
+		elif (label == "coolanttemperature"):
+			return "11"
+		elif (label == "oiltemperature"):
+			return "12"
 		return "test"
