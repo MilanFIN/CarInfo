@@ -14,9 +14,9 @@ class DashView(BaseView):
 		self.blocks.append(BackButton(screen, connection, 0,0))
 
 
-		self.blocks.append(Speed(screen, connection, 95,80))
-		self.blocks.append(Rpm(screen, connection, 313,80))
-		self.blocks.append(Gear(screen, connection, 531,43))
+		self.blocks.append(Speed(screen, connection, 150,80))
+		self.blocks.append(Rpm(screen, connection, 360,80))
+		self.blocks.append(Gear(screen, connection, 580,80))
 
 
 	def click(self, x, y):
