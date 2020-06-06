@@ -39,4 +39,6 @@ class CarConnection():
 			if (self.steeringAngle >= 100 or self.steeringAngle <= -100):
 				self.steeringAddition *= -1
 			return str(self.steeringAngle)
+		elif (label == "ambienttemperature"):
+			return "10"
 		return "test"
