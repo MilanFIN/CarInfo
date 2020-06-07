@@ -45,4 +45,6 @@ class CarConnection():
 			return "11"
 		elif (label == "oiltemperature"):
 			return "12"
+		elif (label == "intaketemperature"):
+			return "13"
 		return "test"

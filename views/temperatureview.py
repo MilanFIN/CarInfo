@@ -5,6 +5,7 @@ from blocks.backbutton import *
 from blocks.ambienttemp import *
 from blocks.coolanttemp import *
 from blocks.oiltemp import *
+from blocks.intaketemp import *
 
 class TemperatureView(BaseView):
 	def __init__(self, screen, connection):
@@ -19,7 +20,8 @@ class TemperatureView(BaseView):
 		#oil temperature
 		self.blocks.append(OilTemp(screen, connection, 590,100))
 		#intake air temp
-		
+		self.blocks.append(IntakeTemp(screen, connection, 70,280))
+
 		
 		"""
 		self.blocks.append(Blank(screen, connection, 95,43))
