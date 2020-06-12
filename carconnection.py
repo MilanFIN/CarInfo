@@ -1,6 +1,17 @@
+import obd
+
+DEBUG = False
+
 class CarConnection():
 	def __init__(self):
 		
+
+		if (not DEBUG):
+			self.connection = obd.Async(fast=False) #"/dev/ttyUSB0", 
+			self.connection.watch(obd.commands.RPM)
+			self.connection.start() 
+
+
 		
 		self.rpm = 0
 		self.rpmAddition = 30
@@ -16,10 +27,16 @@ class CarConnection():
 
 	def getValue(self, label):
 		if (label == "rpm"):
-			self.rpm += self.rpmAddition
-			if (self.rpm >= 8000 or self.rpm <= 0):
-				self.rpmAddition *= -1
-			return str(self.rpm)
+			if (DEBUG):
+				self.rpm += self.rpmAddition
+				if (self.rpm >= 8000 or self.rpm <= 0):
+					self.rpmAddition *= -1
+				return str(self.rpm)
+			else:
+				rpm = self.connection.query(obd.commands.RPM)
+				if (rpm.value != None):
+					self.rpm = int(rpm.value.magnitude)
+					return str(self.rpm)
 		elif (label == "gear"):
 			return "1"
 		elif (label == "speed"):
