@@ -29,7 +29,7 @@ class Fuelpercentage(BaseBlock):
 		font1 = pygame.font.SysFont('Arial', 100)
 		font2 = pygame.font.SysFont('Arial', 80)
 
-		text = font1.render(self.value+"%", False, (255,255,255))
+		text = font1.render(str(self.value)+"%", False, (255,255,255))
 		text2 = font2.render("Fuel left", False, (255,255,255))
 
 		self.screen.blit(text,(self.x + 60,self.y + 80))

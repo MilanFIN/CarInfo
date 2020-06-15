@@ -8,30 +8,32 @@ class CarConnection():
 
 		if (not DEBUG):
 			self.connection = obd.Async(fast=False) #"/dev/ttyUSB0", 
+
+			# everything that was accessible from my car
+			self.connection.watch(obd.commands.SPEED)
 			self.connection.watch(obd.commands.RPM)
+			self.connection.watch(obd.commands.FUEL_LEVEL)
+			self.connection.watch(obd.commands.COOLANT_TEMP)
+			self.connection.watch(obd.commands.INTAKE_TEMP)
+			self.connection.watch(obd.commands.THROTTLE_POS)
+
 			self.connection.start() 
 
 
 		
 		self.rpm = 0
-		self.rpmAddition = 30
 
 		self.throttle = 0
-		self.throttleaddition = 1
 
 		self.steeringAngle = 0
-		self.steeringAddition = 1
 
 		self.speed = 0
-		self.speedAddition = 1
 
 	def getValue(self, label):
 		if (label == "rpm"):
 			if (DEBUG):
-				self.rpm += self.rpmAddition
-				if (self.rpm >= 8000 or self.rpm <= 0):
-					self.rpmAddition *= -1
-				return str(self.rpm)
+				return "3000"
+
 			else:
 				rpm = self.connection.query(obd.commands.RPM)
 				if (rpm.value != None):
@@ -40,28 +42,50 @@ class CarConnection():
 		elif (label == "gear"):
 			return "1"
 		elif (label == "speed"):
-			self.speed += self.speedAddition
-			if (self.speed >= 150 or self.speed <= 0):
-				self.speedAddition *= -1
-			return str(self.speed)
+			if (DEBUG):
+				return "50"
+			else:
+				speed = self.connection.query(obd.commands.SPEED)
+				if (speed.value != None):
+					self.speed = int(speed.value.magnitude)
+					return str(self.speed)
 		elif (label == "fuelpercentage"):
-			return "100"
+			if (DEBUG):
+				return "100"
+			else:
+				fuel = self.connection.query(obd.commands.FUEL_LEVEL)
+				self.fuel = fuel.value.magnitude
+				return round(self.fuel, 1)
+
 		elif (label == "throttle"): #percentages
-			self.throttle += self.throttleaddition
-			if (self.throttle >= 100 or self.throttle <= 0):
-				self.throttleaddition *= -1
-			return str(self.throttle)
+			if (DEBUG):
+				return "50"
+			else:
+				throttle = self.connection.query(obd.commands.THROTTLE_POS)
+				if (throttle.value != None):
+					self.throttle = throttle.value.magnitude
+					resultThrottle = int(self.throttle)
+					return str(resultThrottle)
+
 		elif (label == "steering"):
-			self.steeringAngle += self.steeringAddition
-			if (self.steeringAngle >= 100 or self.steeringAngle <= -100):
-				self.steeringAddition *= -1
 			return str(self.steeringAngle)
 		elif (label == "ambienttemperature"):
-			return "10"
+			return "-"
 		elif (label == "coolanttemperature"):
-			return "11"
+			if (DEBUG):
+				return "-"
+			else:
+				coolant = self.connection.query(obd.commands.COOLANT_TEMP)
+				return str(coolant.value.magnitude)
 		elif (label == "oiltemperature"):
-			return "12"
+			return "-"
 		elif (label == "intaketemperature"):
-			return "13"
+			if (DEBUG):
+				return "-"
+			else:
+				intake = self.connection.query(obd.commands.INTAKE_TEMP)
+				return str(intake.value.magnitude)
+
+
+
 		return "test"
