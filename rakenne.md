@@ -1,3 +1,16 @@
+TODO
+- custom komennot, esim 0146 pitäisi olla ambient temp
+	- rakenne MODE + wikisivun eka sarake
+	- https://en.wikipedia.org/wiki/OBD-II_PIDs#Standard_PIDs
+	- komentoja, voisi tarkastaa käsin
+		- 01A4, vaihde, vaihtuuko tämä vaihteen kanssa?
+		- 0146, ulkolämpötila
+		- 015E, 019D, , fuel rate
+
+
+
+
+
 # main.py tiedosto
 - luo mapin, jossa on tallessa viewit id:llä
 - luo screenin

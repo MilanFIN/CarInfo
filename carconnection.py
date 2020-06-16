@@ -1,6 +1,6 @@
 import obd
 
-DEBUG = False
+DEBUG = True
 
 class CarConnection():
 	def __init__(self):
@@ -69,23 +69,26 @@ class CarConnection():
 
 		elif (label == "steering"):
 			return str(self.steeringAngle)
-		elif (label == "ambienttemperature"):
-			return "-"
+		elif (label == "timingadvance"):
+			return "10"
 		elif (label == "coolanttemperature"):
 			if (DEBUG):
 				return "-"
 			else:
 				coolant = self.connection.query(obd.commands.COOLANT_TEMP)
 				return str(coolant.value.magnitude)
-		elif (label == "oiltemperature"):
-			return "-"
+		elif (label == "catalysttemperature"):
+			return "10"
 		elif (label == "intaketemperature"):
 			if (DEBUG):
 				return "-"
 			else:
 				intake = self.connection.query(obd.commands.INTAKE_TEMP)
 				return str(intake.value.magnitude)
-
+		elif (label == "engineload"):
+			return "50"
+		elif (label == "evaporativepurge"):
+			return "50"
 
 
 		return "test"

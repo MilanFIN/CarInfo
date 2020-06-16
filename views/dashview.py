@@ -6,6 +6,7 @@ from blocks.gear import *
 from blocks.blank import *
 from blocks.speed import *
 from blocks.backbutton import *
+from blocks.throttlebar import *
 
 class DashView(BaseView):
 	def __init__(self, screen, connection):
@@ -16,7 +17,7 @@ class DashView(BaseView):
 
 		self.blocks.append(Speed(screen, connection, 150,80))
 		self.blocks.append(Rpm(screen, connection, 360,80))
-		self.blocks.append(Gear(screen, connection, 580,80))
+		self.blocks.append(ThrottleBar(screen, connection, 580,190))
 
 
 	def click(self, x, y):

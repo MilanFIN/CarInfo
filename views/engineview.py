@@ -2,25 +2,25 @@ from .baseview import *
 from carconnection import *
 from blocks.blank import *
 from blocks.backbutton import *
-from blocks.ambienttemp import *
+from blocks.timingadvance import *
 from blocks.coolanttemp import *
-from blocks.oiltemp import *
+from blocks.catalysttemp import *
 from blocks.intaketemp import *
+from blocks.engineload import *
+from blocks.evapurge import *
 
-class TemperatureView(BaseView):
+class EngineView(BaseView):
 	def __init__(self, screen, connection):
 		super().__init__(screen, connection)
 
 		self.blocks.append(BackButton(screen, connection, 0,0))
 	
-		#ambient temp
-		self.blocks.append(AmbientTemp(screen, connection, 70,100))
-		#coolant temp
+		self.blocks.append(TimingAdvance(screen, connection, 70,100))
 		self.blocks.append(CoolantTemp(screen, connection, 330,100))
-		#oil temperature
-		self.blocks.append(OilTemp(screen, connection, 590,100))
-		#intake air temp
+		self.blocks.append(CatalystTemp(screen, connection, 590,100))
 		self.blocks.append(IntakeTemp(screen, connection, 70,280))
+		self.blocks.append(EngineLoad(screen, connection, 330,280))
+		self.blocks.append(EvaporativePurge(screen, connection, 590,280))
 
 		
 		"""

@@ -26,7 +26,7 @@ class ThrottleBar(BaseBlock):
 
 
 		pygame.draw.rect(self.screen, (0+(255/100*percentage),255-(255/100*percentage),0), pygame.Rect(self.x+50, self.y+100-height, 50, height))
-		font1 = pygame.font.SysFont('Arial', 50)
+		font1 = pygame.font.SysFont('Arial', 60)
 		text = font1.render("Throttle %", False, (255,255,255))
-		self.screen.blit(text,(self.x,self.y + self.scaling*55))
+		self.screen.blit(text,(self.x,self.y + self.scaling*60))
 

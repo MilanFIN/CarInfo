@@ -2,7 +2,7 @@ from .baseblock import *
 from carconnection import *
 
 
-class AmbientTemp(BaseBlock):
+class CatalystTemp(BaseBlock):
 	def __init__(self, screen, connection, xpos, ypos):
 		super().__init__(screen, connection, xpos, ypos)
 		self.xsize = 175
@@ -13,7 +13,7 @@ class AmbientTemp(BaseBlock):
 	def click(self):
 		return ""
 	def update(self):
-		gear = self.connection.getValue("ambienttemperature")
+		gear = self.connection.getValue("catalysttemperature")
 		self.value = gear
 
 		pass
@@ -26,5 +26,5 @@ class AmbientTemp(BaseBlock):
 		text = font1.render(self.value+"°C", False, (255,255,255))
 		self.screen.blit(text,(self.x + 20,self.y))
 		font2 = pygame.font.SysFont('Arial', 60)
-		text2 = font2.render("Ambient", False, (255,255,255))
+		text2 = font2.render("Catalyst", False, (255,255,255))
 		self.screen.blit(text2,(self.x ,self.y + 65))
