@@ -1,6 +1,6 @@
 import obd
 
-DEBUG = True
+DEBUG = False
 
 class CarConnection():
 	def __init__(self):
@@ -16,6 +16,15 @@ class CarConnection():
 			self.connection.watch(obd.commands.COOLANT_TEMP)
 			self.connection.watch(obd.commands.INTAKE_TEMP)
 			self.connection.watch(obd.commands.THROTTLE_POS)
+			
+
+			self.connection.watch(obd.commands.TIMING_ADVANCE)
+			self.connection.watch(obd.commands.ENGINE_LOAD)
+			self.connection.watch(obd.commands.COOLANT_TEMP)
+			self.connection.watch(obd.commands.CATALYST_TEMP_B1S1)
+			self.connection.watch(obd.commands.EVAPORATIVE_PURGE)
+
+
 
 			self.connection.start() 
 
@@ -70,7 +79,11 @@ class CarConnection():
 		elif (label == "steering"):
 			return str(self.steeringAngle)
 		elif (label == "timingadvance"):
-			return "10"
+			if (DEBUG):
+				return "10"
+			else:
+				advance = self.connection.query(obd.commands.TIMING_ADVANCE)
+				return (str(advance.value.magnitude))
 		elif (label == "coolanttemperature"):
 			if (DEBUG):
 				return "-"
@@ -78,7 +91,11 @@ class CarConnection():
 				coolant = self.connection.query(obd.commands.COOLANT_TEMP)
 				return str(coolant.value.magnitude)
 		elif (label == "catalysttemperature"):
-			return "10"
+			if (DEBUG):
+				return "10"
+			else:
+				temp = self.connection.query(obd.commands.CATALYST_TEMP_B1S1)
+				return str(temp.value.magnitude)
 		elif (label == "intaketemperature"):
 			if (DEBUG):
 				return "-"
@@ -86,9 +103,21 @@ class CarConnection():
 				intake = self.connection.query(obd.commands.INTAKE_TEMP)
 				return str(intake.value.magnitude)
 		elif (label == "engineload"):
-			return "50"
+			if (DEBUG):
+				return "50"
+			else:
+				load = self.connection.query(obd.commands.ENGINE_LOAD)
+				loadint = int(load.value.magnitude)
+				return str(loadint)
+
 		elif (label == "evaporativepurge"):
-			return "50"
+			if (DEBUG):
+				return "50"
+			else:
+				purge = self.connection.query(obd.commands.EVAPORATIVE_PURGE)
+				purgeint = int(purge.value.magnitude)
+				return str(purgeint)
+
 
 
 		return "test"

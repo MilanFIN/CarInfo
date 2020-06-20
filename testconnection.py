@@ -8,6 +8,9 @@ from time import sleep
 connection = obd.OBD(fast=False) #"/dev/ttyUSB0", 
 
 
+r = connection.query(obd.commands.TIMING_ADVANCE)
+print(r.value.magnitude)#degrees
+
 
 
 #r = connection.query(obd.commands.ELM_VERSION)
@@ -49,7 +52,8 @@ connection = obd.OBD(fast=False) #"/dev/ttyUSB0",
 #r = connection.query(obd.commands.CATALYST_TEMP_B1S1)
 #print(r.value)#degrees Celsius, NEGATIVE???
 
-#evaporative purge
+#evaporative purgeFI
+
 #r = connection.query(obd.commands.EVAPORATIVE_PURGE)
 #print(r.value)#evaporative purge??? 0.0%
 
