@@ -15,7 +15,7 @@ from views.engineview import *
 from views.fuelview import *
 from views.drivingview import *
 from carconnection import *
-
+from litersper100 import *
 
 WIDTH = 800
 HEIGHT = 480
@@ -28,15 +28,17 @@ class CarInfo():
 		pygame.display.set_caption('vectra')
 
 		self.connection = CarConnection()
+		self.litersPer100 = LitersPer100()
 
 		self.views["testview"] = TestView(self.screen, self.connection)
 		self.views["homeview"] = HomeView(self.screen, self.connection)
 		self.views["dashview"] = DashView(self.screen, self.connection)
 		self.views["engineview"] = EngineView(self.screen, self.connection)
-		self.views["fuelview"] = FuelView(self.screen, self.connection)
+		self.views["fuelview"] = FuelView(self.screen, self.connection, self.litersPer100)
 		self.views["drivingview"] = DrivingView(self.screen, self.connection)
 
 		self.activeView = "homeview"
+
 
 	def run(self):
 		pass
@@ -54,11 +56,19 @@ class CarInfo():
 					return
 
 
+			#update liters/100km
+			self.litersPer100.setSpeed(float(self.connection.getValue("speed")))
+			self.litersPer100.setFuel(float(self.connection.getValue("fuelpercentage")))
+
+
+
 			self.views[self.activeView].update()
 			self.views[self.activeView].render()
 			pygame.display.flip()
 
 			self.clock.tick(60)
+			
+
 
 def main():
 

@@ -12,7 +12,7 @@ class Range(BaseBlock):
 
 
 	def click(self):
-		return "lper100"
+		return ""
 	def update(self):
 		self.rangeLeft = self.connection.getValue("speed")
 		pass

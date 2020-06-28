@@ -29,6 +29,13 @@ class LitersPer100():
 
 		self.speedUpdateTime = time.time()
 
+	def reset(self):
+		line = "0, 0"
+		with open(FILEPATH, 'w') as f:
+			f.write(line)
+		self.lastSaveTime = time.time()
+		self.__init__()
+
 
 	def save(self):
 		if (time.time() - self.lastSaveTime >= SAVEFREQUENCY):
@@ -67,6 +74,7 @@ class LitersPer100():
 
 
 
+"""
 calc = LitersPer100()
 calc.setSpeed(100)
 calc.setFuel(100)
@@ -80,3 +88,4 @@ while True:
 	calc.setSpeed(100+speedAddition)
 	calc.setFuel(fuel)
 	time.sleep(1)
+"""

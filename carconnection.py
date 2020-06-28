@@ -1,6 +1,6 @@
 import obd
 
-DEBUG = False
+DEBUG = True
 
 class CarConnection():
 	def __init__(self):
