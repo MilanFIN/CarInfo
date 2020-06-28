@@ -1,3 +1,5 @@
+import time
+
 from .baseblock import *
 from carconnection import *
 from litersper100 import *
@@ -12,8 +14,15 @@ class ResetMpg(BaseBlock):
 		self.speed = ""
 		self.litersper100 = litersper100
 
+		self.lastClickTime = time.time()
+
+		self.clickDelay = 1 #max time in between double click's
+
 	def click(self):
-		self.litersper100.reset()
+		clickTime = time.time()
+		if (clickTime - self.lastClickTime <= self.clickDelay):
+			self.litersper100.reset()
+		self.lastClickTime = clickTime
 		return ""
 	def update(self):
 		pass
