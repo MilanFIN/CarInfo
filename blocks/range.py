@@ -15,7 +15,8 @@ class Range(BaseBlock):
 	def click(self):
 		return ""
 	def update(self):
-		self.rangeLeft = str(self.litersper100.getRange())
+		value = self.litersper100.getRange()
+		self.rangeLeft = f"{value:.0f}"
 		pass
 	def render(self):
 		super().render()
