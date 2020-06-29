@@ -18,7 +18,7 @@ class FuelView(BaseView):
 
 		self.blocks.append(Mpg(screen, connection, litersper100, 300,150))
 		
-		self.blocks.append(Range(screen, connection, 550,150))
+		self.blocks.append(Range(screen, connection, litersper100, 550,150))
 
 		self.blocks.append(ResetMpg(screen, connection, litersper100, 330, 350))
 

@@ -3,18 +3,19 @@ from carconnection import *
 
 
 class Range(BaseBlock):
-	def __init__(self, screen, connection, xpos, ypos):
+	def __init__(self, screen, connection, litersper100, xpos, ypos):
 		super().__init__(screen, connection, xpos, ypos)
 		self.xsize = 175
 		self.ysize = 175
 
 		self.rangeLeft = ""
+		self.litersper100 = litersper100
 
 
 	def click(self):
 		return ""
 	def update(self):
-		self.rangeLeft = self.connection.getValue("speed")
+		self.rangeLeft = str(self.litersper100.getRange())
 		pass
 	def render(self):
 		super().render()
@@ -24,7 +25,7 @@ class Range(BaseBlock):
 		font1 = pygame.font.SysFont('Arial', 100)
 		font2 = pygame.font.SysFont('Arial', 80)
 
-		text = font1.render("?", False, (255,255,255))
+		text = font1.render(self.rangeLeft, False, (255,255,255))
 		text2 = font2.render("Km", False, (255,255,255))
 
 		self.screen.blit(text,(self.x + 40,self.y + 30))

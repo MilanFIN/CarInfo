@@ -43,13 +43,23 @@ class LitersPer100():
 			with open(FILEPATH, 'w') as f:
 				f.write(line)
 			self.lastSaveTime = time.time()
-			print(time.time())
 
 	def getLitersPer100(self):
 		if (self.drivenDistance != 0):
 			return self.fuelUsed / (self.drivenDistance/100)
 		else:
 			return 0.0
+	
+	def getRange(self):
+		if (self.fuelUsed == 0):
+			return 0.0
+		pass
+		fuelLiters = self.lastFuel / 100*FUELTANKSIZE
+		kmPerLiter = self.drivenDistance / self.fuelUsed
+
+		kmRange = kmPerLiter * fuelLiters
+		return kmRange
+
 	def setSpeed(self, speed):
 		if (speed != self.lastSpeed):
 			
@@ -74,11 +84,14 @@ class LitersPer100():
 
 
 
-"""
+
 calc = LitersPer100()
 calc.setSpeed(100)
-calc.setFuel(100)
+calc.setFuel(50)
 
+print(calc.getRange())
+
+"""
 speedAddition = 1
 fuel = 100
 while True:
