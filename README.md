@@ -5,7 +5,10 @@ Also calculates fuel economy and remaining range of the current fuel tank, this 
 Fuel economy can be stored on disk.
 
 *Setup*
-sudo adduser $USER dialout
-log back in again to take effect
-in carconnection.py, set flag DEBUG to: true, for use with a car, false, for offline use
-in main.py modify pygame.display.set_mode, if intending to use in full screen mode
+* sudo adduser $USER dialout, log back in again to take effect
+* in carconnection.py, set flag DEBUG to: true, for use with a car, false, for offline use
+* in main.py modify pygame.display.set_mode, if intending to use in full screen mode
+* Connect a elm327 device to the vehicle and pc
+
+*Modifying*
+This can probably be modified to work with most cars without gui changes, might require changes to the carconnection.py file
