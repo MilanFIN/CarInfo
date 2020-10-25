@@ -23,8 +23,8 @@ class Range(BaseBlock):
 		# draw a rectangle
 		#pygame.draw.rect(self.screen, WHITE, pygame.Rect(self.x, self.y, self.xsize, self.ysize), 3)
 
-		font1 = pygame.font.SysFont('Arial', 100)
-		font2 = pygame.font.SysFont('Arial', 80)
+		font1 = pygame.font.SysFont('Arial', 75)
+		font2 = pygame.font.SysFont('Arial', 50)
 
 		text = font1.render(self.rangeLeft, False, (255,255,255))
 		text2 = font2.render("Km", False, (255,255,255))

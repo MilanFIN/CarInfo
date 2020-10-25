@@ -21,8 +21,8 @@ class Mpg(BaseBlock):
 		# draw a rectangle
 		#pygame.draw.rect(self.screen, WHITE, pygame.Rect(self.x, self.y, self.xsize, self.ysize), 3)
 
-		font1 = pygame.font.SysFont('Arial', 100)
-		font2 = pygame.font.SysFont('Arial', 80)
+		font1 = pygame.font.SysFont('Arial', 75)
+		font2 = pygame.font.SysFont('Arial', 50)
 		value = self.litersper100.getLitersPer100()
 		value = f"{value:.2f}"
 		text = font1.render(value, False, (255,255,255))

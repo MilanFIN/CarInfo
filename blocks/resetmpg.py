@@ -32,7 +32,7 @@ class ResetMpg(BaseBlock):
 		#pygame.draw.rect(self.screen, WHITE, pygame.Rect(self.x, self.y, self.xsize, self.ysize), 3)
 		pygame.draw.rect(self.screen, WHITE, pygame.Rect(self.x, self.y, self.xsize, self.ysize), 3)
 
-		font1 = pygame.font.SysFont('Arial', 60)
+		font1 = pygame.font.SysFont('Arial', 40)
 		text = font1.render("RESET", False, (255,255,255))
 
 		self.screen.blit(text,(self.x + 20,self.y + 20))
